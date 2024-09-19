@@ -14,3 +14,21 @@ let employees = [
     [{ day: 'Friday', hours: 9}] },
 
 ]
+
+// Task 2: Create a Function to Display Employee Shift Details
+
+function displayEmployeeShifts (employee) {
+
+    console.log (`Shift Week Details`)
+    console.log (`Employee Name: ${employee.name}`)
+    employee.shifts.forEach(shift => 
+       { console.log (`Day: ${shift.day}, Shift Length: ${shift.hours} Hours`) }); 
+
+}
+
+console.log(displayEmployeeShifts(employees[0]))
+// Desired Output:
+// Employee Name: Kenzo
+// Day: Tuesday, Shift Length: 6 Hours
+// Day: Thursday, Shift Length: 8 Hours
+// Day: Friday, Shift Length: 4 Hours
