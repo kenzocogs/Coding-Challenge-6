@@ -1,8 +1,8 @@
-// Task 1: Initialize employees with shift schedules
+// Task 1: Create an Employees Array of Employee Objects
 
 let employees = [
 { name: 'Kenzo', shifts: 
-    [{ day: 'Tuesday', hours: 6}, { day: 'Friday', hours: 4}] },
+    [{ day: 'Tuesday', hours: 6}, {day: 'Thursday', hours: 8 }, { day: 'Friday', hours: 4}, ] },
     
 { name: 'Billybob', shifts: 
     [{ day: 'Wednesday', hours: 10}, { day: 'Thursday', hours: 3}] },
