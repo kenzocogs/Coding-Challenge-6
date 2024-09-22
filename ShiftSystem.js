@@ -20,13 +20,13 @@ let employees = [
 function displayEmployeeShifts (employee) {
    
     console.log (`Shift Week Details`)
-    console.log (`Employee Name: ${employee.name}`)
+    console.log (`Employee Name: ${employee.name}`);
     employee.shifts.forEach(shift => 
        { console.log (`Day: ${shift.day}, Shift Length: ${shift.hours} Hours`) }); 
 
 }
 
-console.log(displayEmployeeShifts(employees[0]))
+console.log(displayEmployeeShifts(employees[0]));
 // Desired Output:
 // Employee Name: Kenzo
 // Day: Tuesday, Shift Length: 6 Hours
@@ -38,7 +38,7 @@ console.log(displayEmployeeShifts(employees[0]))
 function assignShift (name, day, hours) {
 
     // Checking if the employee name is in the employees array
-    let emp = employees.find (employee => employee.name === name)
+    let emp = employees.find (employee => employee.name === name);
 
     if (!emp) {
         console.log (`Error: ${name} is not a valid employee name`);
@@ -47,7 +47,7 @@ function assignShift (name, day, hours) {
     // Now checking if the employee already has an assigned shift for the day
     let shiftCheck = emp.shifts.find(shift => shift.day === day);
     if (shiftCheck) {
-        console.log (`Error: ${name} is already assigned a shift on ${day}`)
+        console.log (`Error: ${name} is already assigned a shift on ${day}`);
         return;
     }
 
@@ -59,4 +59,23 @@ function assignShift (name, day, hours) {
 console.log (assignShift('Billybob', 'Friday', 8)) // Should log a success message
 console.log (assignShift('Excelsior', 'Friday', 8)) // Should log a name-related error
 console.log (assignShift('Kenzo', 'Friday', 8)) // Should log a shift-related error
+
+// Task 4: Create a Function to Calculate Total Hours Worked
+
+function calculateTotalHours (empName) {
+// First checking if employee name is valid
+let emp = employees.find (employee => employee.name === empName)
+
+    if (!emp) {
+        console.log (`Error: ${empName} is not a valid employee name`);
+        return;
+    }
+
+let totalHours = emp.shifts.reduce((total, shift) => total + shift.hours, 0);
+console.log(`${empName} has worked a total of ${totalHours} hours for week.`)
+
+}
+
+console.log (calculateTotalHours('Excelsior')) // Should log a name-related error
+console.log (calculateTotalHours('Billybob')) // Shoudl log that Billybob has worked for 21 hours this week
 
