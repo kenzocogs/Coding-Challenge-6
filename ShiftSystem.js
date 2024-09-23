@@ -11,7 +11,7 @@ let employees = [
     [{ day: 'Monday', hours: 8} ]},
 
 { name: 'Britney', shifts: 
-    [{ day: 'Friday', hours: 9}] },
+    [{ day: 'Thursday', hours: 9}] },
 
 ]
 
@@ -70,12 +70,33 @@ let emp = employees.find (employee => employee.name === empName)
         console.log (`Error: ${empName} is not a valid employee name`);
         return;
     }
-
+// Now using the reduce method to add everything up
 let totalHours = emp.shifts.reduce((total, shift) => total + shift.hours, 0);
-console.log(`${empName} has worked a total of ${totalHours} hours for week.`)
+console.log(`${empName} has worked a total of ${totalHours} hours for the week.`)
 
 }
 
 console.log (calculateTotalHours('Excelsior')) // Should log a name-related error
 console.log (calculateTotalHours('Billybob')) // Shoudl log that Billybob has worked for 21 hours this week
 
+// Task 5: Create a Function to List Employees with Free Days
+
+function listAvailableEmployees (day) {
+// filtering out employees that are not scheduled on a day (+ .some method)
+let availability = employees.filter (employee => !employee.shifts.some (shift => shift.day === day))
+
+// handling case where no employee is free on listed day
+if (availability.length === 0) {
+    console.log (`Sorry, there are no people available to work on ${day}`)
+}
+// now logging all valid employees
+else {
+console.log (`${day}'s available employees:`)
+availability.forEach(employee => console.log(employee.name)) 
+}
+
+}
+
+console.log (listAvailableEmployees('Friday'))
+// Should log Claudia and Britney as available. Friday is used to show that Billybob's Friday shift was successfully
+// added, as he is not listed here. 
